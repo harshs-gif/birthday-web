@@ -1,0 +1,223 @@
+/* 🎨 Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: #fff0f5;
+  overflow-x: hidden;
+}
+
+.page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 🌸 Home Page Styling */
+#home-page {
+  background: linear-gradient(135deg, #ffe4ec, #ffcce0);
+  animation: floatBackground 15s ease-in-out infinite alternate;
+}
+
+#home-page::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  z-index: 0;
+}
+
+.centered {
+  position: relative;
+  z-index: 1;
+  padding: 30px;
+  text-align: center;
+}
+
+.big-text {
+  font-size: 2.6rem;
+  color: #d63384;
+  text-shadow: 1px 1px 10px #fff;
+  animation: popUp 1s ease-out forwards;
+  margin-bottom: 20px;
+}
+
+.small-text {
+  font-size: 1.1rem;
+  color: #555;
+  animation: fadeIn 1.5s ease-in;
+  margin-bottom: 30px;
+}
+
+#toGalleryBtn {
+  font-size: 1rem;
+  padding: 12px 28px;
+  background-color: #fff;
+  color: #ff4d94;
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.4);
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+#toGalleryBtn:hover {
+  background: #ffe6f0;
+  transform: scale(1.05);
+}
+
+/* 📸 Gallery Page Styling */
+#gallery-page {
+  background-image: url("asserts/background.jpeg");
+  background-size: cover;
+  background-position: center;
+  animation: zoomBg 25s ease-in-out infinite alternate;
+  padding: 40px 20px;
+}
+
+#gallery-page::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.35);
+  z-index: 0;
+}
+
+.gallery-header {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 30px;
+}
+
+.gallery-header h2 {
+  font-size: 2.2rem;
+  color: #d63384;
+  text-shadow: 2px 2px 8px #fff;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.photo {
+  width: 180px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: 2px solid #fff;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease;
+  animation: photoReveal 0.8s ease forwards;
+  opacity: 0;
+}
+
+.photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #f48fb1;
+}
+
+/* 🌟 Floating Effects */
+@keyframes floatBackground {
+  0% { background-position: 0 0; }
+  100% { background-position: 100% 100%; }
+}
+
+@keyframes popUp {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0px rgba(255, 105, 180, 0.6); }
+  50% { box-shadow: 0 0 25px rgba(255, 105, 180, 0.9); }
+  100% { box-shadow: 0 0 0px rgba(255, 105, 180, 0.6); }
+}
+
+@keyframes zoomBg {
+  0% { background-size: 110%; }
+  100% { background-size: 120%; }
+}
+
+@keyframes photoReveal {
+  0% { transform: scale(0.7); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ✨ Confetti, Popper & Twinkle */
+#emoji-poppers {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.popper {
+  position: absolute;
+  font-size: 1.8rem;
+  animation: float 4s ease-in infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(720deg); opacity: 0; }
+}
+
+.twinkle {
+  position: absolute;
+  font-size: 1.4rem;
+  animation: twinkle 3s infinite ease-in-out;
+  color: #fff;
+  z-index: 1;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.confetti {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  animation: dropConfetti 2.5s linear infinite;
+  z-index: 2;
+}
+
+@keyframes dropConfetti {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
